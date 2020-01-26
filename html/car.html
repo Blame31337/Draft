@@ -1,21 +1,337 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>The Geovisualization Example</title>
-  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-  <link rel="stylesheet" type="text/css" href="https://js.cit.api.here.com/v3/3.0/mapsjs-ui.css" />
-  <link rel="stylesheet" type="text/css" href="./dist/index.css">
-</head>
-<body>
-  <div class="dl-map"></div>   
-    <script type="text/javascript" src="https://js.cit.api.here.com/v3/3.0/mapsjs-core.js"></script>
-  <script type="text/javascript" src="https://js.cit.api.here.com/v3/3.0/mapsjs-service.js"></script>
-  <script type="text/javascript" src="https://js.cit.api.here.com/v3/3.0/mapsjs-ui.js"></script>
-  <script type="text/javascript" src="https://js.cit.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
-  <script type="text/javascript" src="https://js.cit.api.here.com/v3/3.0/mapsjs-clustering.js"></script>
-  <script type="text/javascript" src="https://js.cit.datalens.api.here.com/2.6.1/mapsjs-datalens.js"></script>  
-  <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-  <script type="text/javascript" src="./src/ui.js" charset="UTF-8"></script>
-  <script type="text/javascript" src="./src/index.js"></script>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+    type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+    type="text/javascript" charset="utf-8"></script>
+    <style>
+      .header {
+        position: absolute;
+        width: 1440px;
+        height: 135px;
+        left: 0px;
+        top: 0px;
+
+        background-image: url(image/image.png);
+      }
+      .mapContainer {
+        position: absolute;
+        width: 1140px;
+        height: 516px;
+        left: 400px;
+        top: 417px;
+      }
+      .footer img{
+        position: absolute;
+        width: 1440px;
+        height: 272px;
+        left: 0px;
+        bottom: 0px;
+        color: #fff;
+        top: 1112px;
+      }
+      .text1 {
+        position: absolute;
+        width: 275px;
+        height: 32px;
+        left: 100px;
+        top: 179px;
+
+        /* 4 */
+        font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        /* identical to box height */
+
+        /* 2 */
+        color: #254B81;
+      }
+      .text2 {
+        position: absolute;
+        width: 160px;
+        height: 21px;
+        left: 122px;
+        top: 241px;
+
+        font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+      }
+      .text3 {
+        position: absolute;
+width: 285px;
+height: 21px;
+left: 436px;
+top: 241px;
+
+font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 21px;
+
+color: #000000;
+      }
+      .text4 {
+        position: absolute;
+width: 160px;
+height: 21px;
+left: 122px;
+top: 270px;
+
+font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 21px;
+
+color: #000000;
+      }
+      .text5 {
+        position: absolute;
+width: 260px;
+height: 21px;
+left: 436px;
+top: 270px;
+
+font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 21px;
+
+color: #000000;
+      }
+      .text6 {
+        position: absolute;
+width: 160px;
+height: 21px;
+left: 122px;
+top: 299px;
+
+font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 21px;
+
+color: #000000;
+      }
+      .text7 {
+        position: absolute;
+width: 160px;
+height: 21px;
+left: 436px;
+top: 299px;
+
+font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 21px;
+
+color: #000000;
+      }
+      .text8 {
+        position: absolute;
+width: 160px;
+height: 21px;
+left: 122px;
+top: 328px;
+
+font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 21px;
+
+color: #000000;
+      }
+      .text9 {
+        position: absolute;
+width: 350px;
+height: 21px;
+left: 436px;
+top: 328px;
+
+font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 21px;
+
+color: #000000;
+      }
+      .text10 {
+        position: absolute;
+width: 160px;
+height: 21px;
+left: 122px;
+top: 357px;
+
+font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 21px;
+
+color: #000000;
+      }
+      .text11 {
+        position: absolute;
+width: 160px;
+height: 21px;
+left: 436px;
+top: 357px;
+
+font-family: Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 21px;
+
+color: #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+    </div>
+    <span class="text1">&lt; Заказ ООО “Родник”</span>
+    <span class="text2">Адрес отправления</span>
+    <span class="text3">Москва, Пушкинская площадь, д. 34</span>
+     <span class="text4">Адрес доставки</span>
+    <span class="text5">Москва, Старая площадь, 10</span>
+    <span class="text6">Дата доставки</span>
+     <span class="text7">26.02.2020</span>
+    <span class="text8">Поездку выполняет</span>
+    <span class="text9">Водитель А. Иванов, Kia Rio У638ВО799</span>
+     <span class="text10">До завершения</span>
+    <span class="text11">17 минут</span>
+    <span class="ind" style="top: 2000">0</span>
+    <div style="width: 640px; height: 480px" id="mapContainer" class="mapContainer"></div>
+    <div class="footer">
+      <img src="image/footer.png">
+    </div>
+    <script>
+        //'apikey': 'EKsnMAK935k3YxYK4Ffp5MxhESOd-3W32EZjSdLY0Og'
+
+
+      // Instantiate a map and platform object:
+var platform = new H.service.Platform({
+  'apikey': 'EKsnMAK935k3YxYK4Ffp5MxhESOd-3W32EZjSdLY0Og'
+});
+// Retrieve the target element for the map:
+var targetElement = document.getElementById('mapContainer');
+
+// Get the default map types from the platform object:
+var defaultLayers = platform.createDefaultLayers();
+
+// Instantiate the map:
+var map = new H.Map(
+  document.getElementById('mapContainer'),
+  defaultLayers.vector.normal.map,
+  {
+    zoom: 10,
+    center: { lat: 52.51, lng: 13.4 }
+  });
+// Create the parameters for the routing request:
+var routingParameters = {
+  // The routing mode:
+  'mode': 'fastest;car',
+  // The start point of the route:
+  'waypoint0': 'geo!55.7662488,37.6063192',
+  // The end point of the route:
+  'waypoint1': 'geo!55.7536690,37.6326732',
+  // To retrieve the shape of the route we choose the route
+  // representation mode 'display'
+  'representation': 'display'
+};
+
+// Define a callback function to process the routing response:
+var onResult = function(result) {
+  var route,
+    routeShape,
+    startPoint,
+    endPoint,
+    linestring;
+  if(result.response.route) {
+  // Pick the first route from the response:
+  route = result.response.route[0];
+  // Pick the route's shape:
+  routeShape = route.shape;
+
+  // Create a linestring to use as a point source for the route line
+  linestring = new H.geo.LineString();
+
+  // Push all the points in the shape into the linestring:
+  routeShape.forEach(function(point) {
+    var parts = point.split(',');
+    linestring.pushLatLngAlt(parts[0], parts[1]);
+  });
+
+  // Retrieve the mapped positions of the requested waypoints:
+  startPoint = route.waypoint[0].mappedPosition;
+  endPoint = route.waypoint[1].mappedPosition;
+
+  // Create a polyline to display the route:
+  var routeLine = new H.map.Polyline(linestring, {
+    style: { strokeColor: 'blue', lineWidth: 3 }
+  });
+
+  // Create a marker for the start point:
+  var startMarker = new H.map.Marker({
+    lat: startPoint.latitude,
+    lng: startPoint.longitude
+  });
+
+  // Create a marker for the end point:
+  var endMarker = new H.map.Marker({
+    lat: endPoint.latitude,
+    lng: endPoint.longitude
+  });
+
+  // Add the route polyline and the two markers to the map:
+  map.addObjects([routeLine, startMarker, endMarker]);
+
+  // Set the map's viewport to make the whole route visible:
+  map.getViewModel().setLookAtData({bounds: routeLine.getBoundingBox()});
+  }
+};
+
+// Get an instance of the routing service:
+var router = platform.getRoutingService();
+
+// Call calculateRoute() with the routing parameters,
+// the callback and an error callback function (called if a
+// communication error occurs):
+router.calculateRoute(routingParameters, onResult,
+  function(error) {
+    alert(error.message);
+  });
+      
+      
+     // var _Index = jQuery('.ind').text(),
+    //      int;
+   //    int = setInterval(function() { // запускаем интервал
+   //      _Index++;
+  //        console.log(routingParameters.waypoint0)
+  //       routingParameters.waypoint0 = 'geo!'+(55.7662488-_Index*0.001)+','+(37.6063192-_Index*0.001);
+ //         router.calculateRoute(routingParameters, onResult,
+ // function(error) {
+ //   alert(error.message);
+ // });
+ //       }, 2000);
+      
+      </script>
+  </body>
 </html>    
