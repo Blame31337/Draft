@@ -1,0 +1,940 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="js/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+    <script src="owlcarousel/owl.carousel.min.js"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function(){
+        jQuery(".dostavka").hide();
+      jQuery('.cal_button').on('click', function () {
+        jQuery(".cal_button").hide();
+        jQuery(".image").hide();
+        jQuery(".dostavka").show("slow")
+      //alert('Ваша версия jQuery ' + jQuery('.footer img').css('top'));
+        jQuery('.footer img').css('top', '2120');
+        jQuery('.image').css('background-color', '#fff');
+        return false;
+      });
+        
+        jQuery('.item_b1').on('click', function () {
+        jQuery('.text_f_4').text("- 300 ₽");
+        jQuery('.text_f_6').text("599 700 ₽");
+        return false;
+      });
+        
+        jQuery('.item_b2').on('click', function () {
+        jQuery('.text_f_4').text("- 450 ₽");
+        jQuery('.text_f_6').text("599 550 ₽");
+        return false;
+      });
+        
+        jQuery('.item_b3').on('click', function () {
+        jQuery('.text_f_4').text("0 ₽");
+        jQuery('.text_f_6').text("600 000 ₽");
+        return false;
+      });
+        
+        jQuery('.button_bron_a').click(function() { // Вызываем функцию по нажатию на кнопку 
+            jQuery('.popup').show(); // Открываем окно
+            jQuery('.overlay_popup').show();
+          jQuery("body").css("overflow","hidden");
+          return false;
+          // Открываем блок заднего фона
+        }) 
+        jQuery('.overlay_popup').click(function() { // Обрабатываем клик по заднему фону
+            jQuery('.overlay_popup, .popup').hide(); 
+          jQuery("body").css("overflow","auto");// Скрываем затемнённый задний фон и основное всплывающее окно
+        })
+        
+        var _Seconds = jQuery('.second .st').text(),
+          int;
+        var _Minute = jQuery('.minute .st').text(),
+          int;
+        int = setInterval(function() { // запускаем интервал
+          if (_Seconds > 0) {
+            _Seconds--; // вычитаем 1
+            if(_Seconds <10)
+              {
+                jQuery('.second .st').text("0"+_Seconds);
+              } else {
+                jQuery('.second .st').text(_Seconds);
+              }
+            if(_Seconds == 0)
+              {
+                _Minute--;
+                if(_Minute <10){
+                    jQuery('.minute .st').text("0"+_Minute);
+                  } else {
+                    jQuery('.minute .st').text(_Minute);
+                  }
+                _Seconds = 60;
+                jQuery('.second .st').text(_Seconds);
+              }
+             // выводим получившееся значение в блок
+          } 
+          
+        }, 1000);
+        });
+    </script>
+    <style>
+   body {
+    background-image: url(image/3.png); /* Путь к фоновому изображению */
+    background-color: #fff; /* Цвет фона */
+    background-repeat: no-repeat;
+   }
+      .cal_button {
+        position: absolute;
+        
+        left: 0px;
+        top: 0px;
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        text-decoration-line: underline;
+        color: #254B81;
+        background-color: #fff;
+      } 
+      .hide_button {
+        position: absolute;
+        width: 378px;
+        height: 32px;
+        left: 531px;
+        top: 966px;
+        background-color: #fff;
+      }
+      .footer img{
+        position: absolute;
+        width: 1440px;
+        height: 272px;
+        left: 0px;
+        bottom: 0px;
+        color: #fff;
+        top: 1112px;
+      }
+      .image {
+        position: absolute;
+        width: 1440px;
+        height: 272px;
+        left: 0px;
+        bottom: 0px;
+        color: #fff;
+        top: 1112px;
+      }
+      .second {
+        position: absolute;
+        width: 89.5px;
+        height: 84px;
+        left: 1188px;
+        top: 362px;
+        background: #ECF1F9;
+        border-radius: 10px;
+      }
+      .minute {
+        position: absolute;
+        width: 89.5px;
+        height: 84px;
+        left: 1089px;
+        top: 362px;
+
+        background: #ECF1F9;
+        border-radius: 10px;
+      }
+      .hour {
+        position: absolute;
+        width: 89.5px;
+        height: 84px;
+        left: 990px;
+        top: 362px;
+
+        background: #ECF1F9;
+        border-radius: 10px;
+      }
+      .day {
+        position: absolute;
+        width: 89.5px;
+        height: 84px;
+        left: 891px;
+        top: 362px;
+
+        background: #ECF1F9;
+        border-radius: 10px;
+      }
+      .st{
+        position: absolute;
+        width: 40px;
+        height: 42px;
+        left: 25px;
+        top: 21px;
+
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 36px;
+        line-height: 42px;
+        color: #254B81;
+      }
+      .dostavka {
+        position: absolute;
+        width: 1440px;
+        height: 1184px;
+        left: 0px;
+        top: 936px;
+        background-color: #fff;
+      }
+      .text_dostavka {
+        position: absolute;
+        width: 111px;
+        height: 32px;
+        left: 151px;
+        top: 50px;
+
+        /* 4 */
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        /* identical to box height */
+
+        /* 2 */
+        color: #254B81;
+      }
+      .table_fon {
+        position: absolute;
+        width: 1142px;
+        height: 252px;
+        left: 152px;
+        top: 112px;
+
+        /* Gray 6 */
+        background: #F2F2F2;
+
+      }
+      .text_ot {
+        position: absolute;
+        width: 102px;
+        height: 21px;
+        left: 80px;
+        top: 21px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+      }
+      .text_to {
+        position: absolute;
+        width: 93px;
+        height: 21px;
+        left: 546px;
+        top: 21px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+      }
+      .select_ot {
+        position: absolute;
+        width: 335px;
+        height: 48px;
+        left: 80px;
+        top: 83px;
+        color: #254B81;
+        /* 1 */
+        background: #ECF1F9;
+        border-radius: 6px;
+      }
+      .select_to {
+        position: absolute;
+        width: 335px;
+        height: 48px;
+        left: 546px;
+        top: 83px;
+        color: #254B81;
+        /* 1 */
+        background: #ECF1F9;
+        border-radius: 6px;
+      }
+      .text_region1 {
+        position: absolute;
+        width: 47px;
+        height: 19px;
+        left: 80px;
+        top: 60px;
+
+        /* 1 */
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 19px;
+        /* identical to box height */
+
+        color: #000000;
+
+        opacity: 0.5;
+      }
+      .text_region2 {
+        position: absolute;
+        width: 47px;
+        height: 19px;
+        left: 546px;
+        top: 60px;
+
+        /* 1 */
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 19px;
+        /* identical to box height */
+
+        color: #000000;
+
+        opacity: 0.5;
+      }
+      .input_ot {
+        position: absolute;
+        width: 335px;
+        height: 48px;
+        left: 80px;
+        top: 174px;
+
+        /* 1 */
+        background: #ECF1F9;
+        border-radius: 6px;
+        
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 19px;
+        /* identical to box height */
+
+        /* 2 */
+        color: #254B81;
+      }
+      .input_to {
+        position: absolute;
+        width: 335px;
+        height: 48px;
+        left: 546px;
+        top: 174px;
+
+        /* 1 */
+        background: #ECF1F9;
+        border-radius: 6px;
+        
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 19px;
+        /* identical to box height */
+
+        /* 2 */
+        color: #254B81;
+      }
+      .text_adress1 {
+        position: absolute;
+        width: 42px;
+        height: 19px;
+        left: 80px;
+        top: 151px;
+
+        /* 1 */
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 19px;
+        /* identical to box height */
+
+        color: #000000;
+
+        opacity: 0.5;
+      }
+      .text_adress2 {
+        position: absolute;
+        width: 42px;
+        height: 19px;
+        left: 546px;
+        top: 151px;
+
+        /* 1 */
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 19px;
+        /* identical to box height */
+
+        color: #000000;
+
+        opacity: 0.5;
+      }
+      .table_fon2 {
+        position: absolute;
+        width: 1142px;
+        height: 212px;
+        left: 152px;
+        top: 404px;
+
+        /* Gray 6 */
+        background: #F2F2F2;
+      }
+      .input_srok {
+        position: absolute;
+        width: 243px;
+        height: 48px;
+        left: 80px;
+        top: 74px;
+
+        /* 1 */
+        background: #ECF1F9;
+        border-radius: 6px;
+      }
+      .input_type {
+        position: absolute;
+        width: 243px;
+        height: 48px;
+        left: 806px;
+        top: 74px;
+
+        /* 1 */
+        background: #ECF1F9;
+      }
+      .input_ves {
+        position: absolute;
+        width: 243px;
+        height: 48px;
+        left: 443px;
+        top: 74px;
+
+        /* 1 */
+        background: #ECF1F9;
+      }
+      .text_fon2_1 {
+        position: absolute;
+        width: 116px;
+        height: 21px;
+        left: 80px;
+        top: 43px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+
+      }
+      .text_fon2_2 {
+        position: absolute;
+        width: 116px;
+        height: 21px;
+        left: 443px;
+        top: 43px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+
+      }
+      .text_fon2_3 {
+        position: absolute;
+        width: 116px;
+        height: 21px;
+        left: 806px;
+        top: 43px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+
+      }
+      .text_radio {
+        position: absolute;
+        width: 178px;
+        height: 21px;
+        left: 110px;
+        top: 158px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+      }
+      .input_radio {
+        position: absolute;
+        width: 21px;
+        height: 21px;
+        left: 80px;
+        top: 153px;
+
+        background: #ECF1F9;
+      }
+      .table_fon3 {
+        position: absolute;
+        width: 1142px;
+        height: 253px;
+        left: 152px;
+        top: 656px;
+
+        /* Gray 6 */
+        background: #F2F2F2;
+      }
+      .text_fon3 {
+        position: absolute;
+        width: 183px;
+        height: 21px;
+        left: 80px;
+        top: 43px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+      }
+      .carousel {
+        position: absolute;
+        width: 1142px;
+        height: 126px;
+        left: 0px;
+        top: 84px;
+      }
+      .item_c {
+        position: absolute;
+        width: 243px;
+        height: 126px;
+        left: 80px;
+        top: 0px;
+
+        background: #ECF1F9;
+        border: 2px solid #8EA8D2;
+        box-sizing: border-box;
+        border-radius: 10px;
+      }
+      .carousel .item {
+        
+
+        position: absolute;
+        width: 161px;
+        height: 126px;
+        
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+
+        /* 2 */
+        color: #254B81;
+      }
+      .text_f_1 {
+        position: absolute;
+        width: 168px;
+        height: 21px;
+        left: 236px;
+        top: 959px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+      }
+      .text_f_2 {
+        position: absolute;
+        width: 71px;
+        height: 21px;
+        left: 557px;
+        top: 959px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+      }
+      .text_f_3 {
+        position: absolute;
+        width: 136px;
+        height: 21px;
+        left: 236px;
+        top: 999px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+      }
+      .text_f_4 {
+        position: absolute;
+        width: 56px;
+        height: 21px;
+        left: 572px;
+        top: 999px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 21px;
+
+        color: #000000;
+      }
+      .text_f_5 {
+        position: absolute;
+        width: 217px;
+        height: 32px;
+        left: 236px;
+        top: 1049px;
+
+        /* 4 */
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        /* identical to box height */
+
+        /* 2 */
+        color: #254B81;
+      }
+      .text_f_6 {
+        position: absolute;
+        width: 119px;
+        height: 32px;
+        left: 509px;
+        top: 1049px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        /* identical to box height */
+
+        /* 2 */
+        color: #254B81;
+      }
+      .button_bron {
+        position: absolute;
+        width: 258px;
+        height: 63px;
+        left: 236px;
+        top: 1104px;
+
+        /* 2 */
+        background: #254B81;
+        border-radius: 8px;  
+      }
+      .button_bron_a {
+        position: absolute;
+        width: 198px;
+        height: 27px;
+        left: 40px;
+        top: 18px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 27px;
+        /* identical to box height */
+        text-decoration: none;
+        color: #FFFFFF;
+      }
+      .item1 {
+        position: absolute;
+        width: 243px;
+        height: 126px;
+        left: 80px;
+        top: 84px;
+
+        /* 1 */
+        background: #ECF1F9;
+        border: 2px solid #8EA8D2;
+        box-sizing: border-box;
+        border-radius: 10px;
+      }
+      .item_text1 {
+        position: absolute;
+        width: 161px;
+        height: 32px;
+        left: 40px;
+        top: 63px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+
+        /* 2 */
+        color: #254B81;
+      }
+      .item2 {
+        position: absolute;
+        width: 243px;
+        height: 126px;
+        left: 443px;
+        top: 84px;
+
+        /* 1 */
+        background: #ECF1F9;
+        border: 2px solid #8EA8D2;
+        box-sizing: border-box;
+        border-radius: 10px;
+      }
+      .item_text2 {
+        position: absolute;
+        width: 161px;
+        height: 32px;
+        left: 40px;
+        top: 63px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+
+        /* 2 */
+        color: #254B81;
+      }
+      .item3 {
+        position: absolute;
+        width: 243px;
+        height: 126px;
+        left: 800px;
+        top: 84px;
+
+        /* 1 */
+        background: #ECF1F9;
+        border: 2px solid #8EA8D2;
+        box-sizing: border-box;
+        border-radius: 10px;
+      }
+      .item_text3 {
+        position: absolute;
+        width: 198px;
+        height: 48px;
+        left: 24px;
+        top: 41px;
+
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+
+        /* 2 */
+        color: #254B81;
+      }
+      .item_i1 {
+        position: absolute;
+        width: 100px;
+        height: 29px;
+        left: 40px;
+        top: 24px;
+      }
+      .item_i2 {
+        position: absolute;
+        width: 139px;
+        height: 20px;
+        left: 42px;
+        top: 29px;
+      }
+      .overlay_popup {
+        display:none;
+        position:fixed;
+        z-index: 999;
+        top:0;
+        right:0; 
+        left:0;
+        bottom:0;
+        background:#000; 
+        opacity:0.5;
+      }
+      .popup {
+        display: none;
+        z-index: 1000;
+        position: absolute;
+        width: 878px;
+        height: 252px;
+        left: 50px;
+        top: -250px;
+
+        background: #FFFFFF;
+      }
+      .text_popup1 {
+        position: absolute;
+        width: 255px;
+        height: 32px;
+        left: 73px;
+        top: 73px;
+
+        /* 4 */
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 32px;
+        /* identical to box height */
+
+        /* 2 */
+        color: #254B81;
+      }
+      .text_popup2 {
+        position: absolute;
+        width: 636px;
+        height: 42px;
+        left: 73px;
+        top: 123px;
+
+        /* 2 */
+        font-family: ALS Hauss;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 21px;
+
+        /* Gray 1 */
+        color: #333333;
+      }
+  </style>
+  </head>
+  <body>
+    <div class="day">
+      <span class="st">01</span>
+    </div>
+    <div class="hour">
+      <span class="st">19</span>
+    </div>
+    <div class="minute">
+      <span class="st">05</span>
+    </div>
+    <div class="second">
+      <span class="st">12</span>
+    </div>
+    <div class="hide_button">
+      <a href="#" class="cal_button">Рассчитать стоимость доставки</a>
+    </div>
+
+    <div class="dostavka">
+      <span class="text_dostavka">Доставка</span>
+      <div class="table_fon">
+        <span class="text_ot">Отправитель</span>
+        <span class="text_to">Получатель</span>
+        <span class="text_region1">Регион</span>
+         <span class="text_region2">Регион</span>
+        <select name="ot[]" class="select_ot">
+        <option>г. Москва</option>
+          <option>Московская область</option>
+          <option>Санкт-Петербург</option>
+          <option>Казань</option>
+          <option>Мурманск</option>
+       </select>
+        <span class="text_adress1">Адрес</span>
+        <input type="text" class="input_ot" value="    Пушкинская площадь, д. 34" disabled>
+        <select name="to[]" class="select_to">
+        <option>г. Москва</option>
+          <option>Московская область</option>
+          <option>Санкт-Петербург</option>
+          <option>Казань</option>
+          <option>Мурманск</option>
+       </select>
+        <span class="text_adress2">Адрес</span>
+        <input type="text" class="input_to" value="    Пушкинская площадь, д. 34" disabled>
+      </div>
+      <div class="table_fon2">
+        <span class="text_fon2_1">Срок доставки</span>
+        <select name="to_day[]" class="input_srok" disabled>
+        <option disabled>1 день</option>
+          </select>
+        <span class="text_fon2_2">Вес посылки</span>
+         <input type="text" class="input_ves" value="    30 кг" disabled>
+        <span class="text_fon2_3">Тип доставки</span>
+        <select name="to_day[]" class="input_type" disabled>
+        <option disabled>До офиса, с разгрузкой</option>
+          </select>
+        <span class="text_radio">Застраховать посылку</span><input class="input_radio" name="strah" type="checkbox" value="zastrahovan">
+      </div>
+      <div class="table_fon3">
+        <span class="text_fon3">Выберите исполнителя</span>
+        <a href="#" class="item_b1"><div class="item1">
+          <img src="image/image8.png" class="item_i1">
+          <span class="item_text1">Стоимость: 300 ₽ Ближайшая дата: 4 февраля</span>
+        </div></a>
+        <a href="#" class="item_b2"><div class="item2">
+          <img src="image/image9.png" class="item_i2">
+          <span class="item_text2">Стоимость: 450 ₽ Ближайшая дата: 2 февраля</span>
+        </div></a>
+        <a href="#" class="item_b3"><div class="item3">
+          <span class="item_text3">Самостоятельная доставка</span>
+        </div></a>
+      </div>
+       <span class="text_f_1">Ваша текущая ставка</span>
+      <span class="text_f_2">969,00 ₽</span>
+      <span class="text_f_3">Цена за доставку</span>
+      <span class="text_f_4">- 300 ₽</span>
+      <span class="text_f_5">Вы зарабатываете</span>
+      <span class="text_f_6">599 700 ₽</span>
+      <div class="button_bron">
+        <a href="#" class="button_bron_a">Забронировать цену</a>
+        
+        <div class="overlay_popup"></div>
+        <div class="popup" id="popup1">
+
+      <span class="text_popup1">Цена забронирована!</span>
+			<span class="text_popup2">Договор сформирован и отправлен логисту. Если Вы победите в закупке, мы направим ссылку на подписание и код-пароль Вам по SMS</span>
+
+	</div>
+      </div>
+    </div>
+    
+    <div class="image">
+      
+    </div>
+    <div class="footer">
+      <img src="image/footer.png">
+    </div>
+  </body>
+</html>
